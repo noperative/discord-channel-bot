@@ -1,0 +1,7 @@
+Python 3.5 or higher required.
+
+Set up secret.yaml with token and server.
+
+$ ./setup.sh
+$ source env/bin/activate
+$ python3 bot.py
