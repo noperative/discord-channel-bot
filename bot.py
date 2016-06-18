@@ -14,13 +14,12 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    server = message.server
+    if message.server is not None:
+        return
 
-    # ignore PMs for now
-    if server is None:
-        for s in client.servers:
-            if s.id == str(default_server_id):
-                server = s
+    for s in client.servers:
+        if s.id == str(default_server_id):
+            server = s
 
     if message.content.startswith('%join') or message.content.startswith('%leave'):
         is_join = message.content.startswith('%join')
