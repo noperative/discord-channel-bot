@@ -34,6 +34,8 @@ async def on_message(message):
                 deny = discord.Permissions.none()
                 allow.read_messages = is_join
                 allow.send_messages = is_join
+                deny.read_messages = not is_join
+                deny.send_messages = not is_join
 
                 # If its a PM we need to connect the author to the server
                 member = message.author
