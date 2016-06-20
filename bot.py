@@ -33,9 +33,7 @@ async def on_message(message):
                 allow = discord.Permissions.none()
                 deny = discord.Permissions.none()
                 allow.read_messages = is_join
-                allow.send_messages = is_join
                 deny.read_messages = not is_join
-                deny.send_messages = not is_join
 
                 # If its a PM we need to connect the author to the server
                 member = message.author
@@ -44,6 +42,10 @@ async def on_message(message):
                         if member.id == m.id:
                             member = m
 
+                existing_permissions = channel.permissions_for(member)
+                if existing_permissions.can_send_messages:
+                    await client.send_message(message.channel, 'You are banned from this channel DansGame')
+                    
                 await client.edit_channel_permissions(
                     channel,
                     member,
