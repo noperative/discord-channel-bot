@@ -43,9 +43,10 @@ async def on_message(message):
                             member = m
 
                 existing_permissions = channel.permissions_for(member)
-                if not existing_permissions.read_history:
+                if not existing_permissions.read_message_history:
                     await client.send_message(message.channel, 'You are banned from this channel DansGame')
-                    
+                    return
+ 
                 await client.edit_channel_permissions(
                     channel,
                     member,
