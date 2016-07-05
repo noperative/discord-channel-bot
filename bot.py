@@ -44,7 +44,7 @@ async def on_message(message):
 
                 existing_permissions = channel.permissions_for(member)
                 if not existing_permissions.read_message_history:
-                    await client.send_message(message.channel, 'You are banned from this channel DansGame')
+                    await client.send_message(message.channel, 'You are banned from this channel MINGLEE')
                     return
  
                 await client.edit_channel_permissions(
@@ -54,10 +54,10 @@ async def on_message(message):
                     deny=deny,
                 )
 
-                await client.send_message(message.channel, 'Seems like a success.')
+                await client.send_message(message.channel, 'MingLee')
                 return
 
-        await client.send_message(message.channel, 'No such channel exists')
+        await client.send_message(message.channel, 'Channel doesn't exit MINGLEE')
 
 
 @client.event
