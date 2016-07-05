@@ -57,7 +57,7 @@ async def on_message(message):
                 await client.send_message(message.channel, 'MingLee')
                 return
 
-        await client.send_message(message.channel, 'Channel doesn't exit MINGLEE')
+        await client.send_message(message.channel, 'Channel doesn\'t exist MINGLEE')
 
 
 @client.event
