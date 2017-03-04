@@ -50,8 +50,7 @@ async def on_message(message):
                 await client.edit_channel_permissions(
                     channel,
                     member,
-                    allow=allow,
-                    deny=deny,
+                    PermissionOverwrite.from_pair(allow=allow, deny=deny),
                 )
 
                 await client.send_message(message.channel, 'MingLee')
