@@ -42,8 +42,10 @@ async def on_message(message):
                         if member.id == m.id:
                             member = m
 
-                existing_permissions = channel.permissions_for(member)
-                if not existing_permissions.read_message_history:
+                existing_permissions = channel.overwrites_for(member)
+                
+                # This is a nullable boolean, weird condition here is mandatory
+                if existing_permissions.read_message_history is False:
                     await client.send_message(message.channel, 'You are banned from this channel MINGLEE')
                     return
  
