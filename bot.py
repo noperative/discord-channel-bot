@@ -1,4 +1,5 @@
 import discord
+import traceback
 import yaml
 
 with open('secret.yaml', 'r') as f:
@@ -68,5 +69,12 @@ async def on_ready():
     print(client.user.id)
     print('---------------')
 
-
-client.run(token)
+while True:
+    try:
+        client.run(token)
+    except Exception as exc:
+        traceback.print_exc()
+        
+        # If its a Ctrl-C then we raise it again and end the program
+        if exc is KeyboardInterrupt:
+            raise exc
