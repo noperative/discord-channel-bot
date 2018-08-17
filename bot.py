@@ -53,7 +53,7 @@ async def on_message(message):
                 await client.edit_channel_permissions(
                     channel,
                     member,
-                    PermissionOverwrite.from_pair(allow=allow, deny=deny),
+                    discord.PermissionOverwrite.from_pair(allow=allow, deny=deny),
                 )
 
                 await client.send_message(message.channel, 'MingLee')
@@ -69,12 +69,11 @@ async def on_ready():
     print(client.user.id)
     print('---------------')
 
-while True:
-    try:
-        client.run(token)
-    except Exception as exc:
-        traceback.print_exc()
-        
-        # If its a Ctrl-C then we raise it again and end the program
-        if exc is KeyboardInterrupt:
-            raise exc
+try:
+    client.run(token)
+except Exception as exc:
+    traceback.print_exc()
+
+    # If its a Ctrl-C then we raise it again and end the program
+    if exc is KeyboardInterrupt:
+        raise exc
